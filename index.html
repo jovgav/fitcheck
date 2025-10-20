@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitCheck - Working!</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            margin: 100px auto; 
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .success { 
+            background: rgba(212, 237, 218, 0.2); 
+            color: #d4edda; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin: 20px 0;
+            border: 1px solid rgba(212, 237, 218, 0.3);
+        }
+        .upload-area {
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(255,255,255,0.5);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.8);
+        }
+        input[type="file"] { display: none; }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(231, 243, 255, 0.2);
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 FitCheck is Live!</h1>
+        
+        <div class="success">
+            ✅ GitHub Pages is working perfectly!
+        </div>
+        
+        <p>Your fashion analyzer is now live and ready to use.</p>
+        
+        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+            <h3>📸 Upload Outfit Photo</h3>
+            <p>Click here to analyze your fashion</p>
+        </div>
+        
+        <input type="file" id="fileInput" accept="image/*" onchange="handleFile(this.files[0])">
+        
+        <div class="result" id="result">
+            <h3>✅ Photo Uploaded Successfully!</h3>
+            <p>FitCheck is analyzing your outfit...</p>
+            <p><em>Demo mode: This is a test of the upload functionality</em></p>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            <p>🚀 <strong>FitCheck</strong> - AI Fashion Analyzer</p>
+            <p>Built with TensorFlow.js • Deployed on GitHub Pages</p>
+        </div>
+    </div>
+
+    <script>
+        function handleFile(file) {
+            if (file) {
+                document.getElementById('result').style.display = 'block';
+                console.log('File uploaded:', file.name);
+                
+                // Simulate analysis
+                setTimeout(() => {
+                    const result = document.getElementById('result');
+                    result.innerHTML = `
+                        <h3>🎯 Analysis Complete!</h3>
+                        <p><strong>FitCheck says:</strong> This outfit is ${Math.floor(Math.random() * 40) + 30}% cool!</p>
+                        <p><em>Demo mode: Upload your real FitCheck app for AI analysis</em></p>
+                    `;
+                }, 2000);
+            }
+        }
+        
+        console.log('FitCheck loaded successfully!');
+        
+        // Show current time
+        const timeElement = document.createElement('p');
+        timeElement.style.fontSize = '0.8em';
+        timeElement.style.opacity = '0.7';
+        timeElement.textContent = `Loaded at: ${new Date().toLocaleString()}`;
+        document.querySelector('.container').appendChild(timeElement);
+    </script>
+</body>
+</html>
